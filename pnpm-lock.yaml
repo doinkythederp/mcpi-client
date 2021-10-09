@@ -3,6 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@commitlint/cli': ^13.1.0
   '@commitlint/config-angular': ^13.1.0
+  '@doinkythederp/events': github:doinkythederp/events
   '@types/node': latest
   '@typescript-eslint/eslint-plugin': ^4.29.2
   '@typescript-eslint/parser': ^4.29.2
@@ -18,6 +19,7 @@ specifiers:
   typescript: 4.x
 
 dependencies:
+  '@doinkythederp/events': github.com/doinkythederp/events/38b7f24d192e38a0d0f7655386c1451f7b7246f4
   source-map-support: 0.5.20
 
 devDependencies:
@@ -292,7 +294,6 @@ packages:
 
   /@types/node/16.10.2:
     resolution: {integrity: sha512-zCclL4/rx+W5SQTzFs9wyvvyCwoK9QtBpratqz2IYJ3O8Umrn0m3nsTv0wQBk9sRGpvUe9CwPDrQFB10f1FIjQ==}
-    dev: true
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}
@@ -2209,3 +2210,11 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  github.com/doinkythederp/events/38b7f24d192e38a0d0f7655386c1451f7b7246f4:
+    resolution: {tarball: https://codeload.github.com/doinkythederp/events/tar.gz/38b7f24d192e38a0d0f7655386c1451f7b7246f4}
+    name: '@doinkythederp/events'
+    version: 1.0.0
+    dependencies:
+      '@types/node': 16.10.2
+    dev: false
