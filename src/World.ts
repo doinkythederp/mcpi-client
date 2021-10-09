@@ -2,6 +2,7 @@ import { BlockManager } from './Block';
 import { Camera } from './Camera';
 import { Chat } from './Chat';
 import { Connection, ConnectionOptions } from './Connection';
+import { Base } from './util';
 import { ClientPlayer } from './ClientPlayer';
 import { Entity } from './Entity';
 
@@ -30,11 +31,14 @@ export class World {
     this.blocks = new BlockManager(this);
     this.camera = new Camera(this);
     this.me = new ClientPlayer(this);
+    this.checkpoint = new WorldCheckpoint(this);
+  }
 
   public readonly chat: Chat;
   public readonly blocks: BlockManager;
   public readonly camera: Camera;
   public readonly me: ClientPlayer;
+  public readonly checkpoint: WorldCheckpoint;
 
   /**
    * Destroys the connection, disconnecting from the API.
@@ -54,4 +58,22 @@ export class World {
   }
   /** @internal */
   public readonly connection: Connection;
+}
+
+export class WorldCheckpoint extends Base {
+  /**
+   * Saves the current state of the world, which can be restored later with a call to {@link restore}.
+   * @see [api reference](https://picraft.readthedocs.io/en/release-1.0/protocol.html#world-checkpoint-save)
+   */
+  public async create() {
+    await this.world.connection.send(`world.checkpoint.save()`, false);
+  }
+
+  /**
+   * If a checkpoint has been created with {@link create}, restores the world to its state.
+   * @see [api reference](https://picraft.readthedocs.io/en/release-1.0/protocol.html#world-checkpoint-restore)
+   */
+  public async restore() {
+    await this.world.connection.send(`world.checkpoint.save()`, false);
+  }
 }
