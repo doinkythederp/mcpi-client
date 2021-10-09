@@ -1,4 +1,5 @@
 import { BlockManager } from './Block';
+import { Camera } from './Camera';
 import { Connection, ConnectionOptions } from './Connection';
 import { ClientPlayer } from './ClientPlayer';
 import { Entity } from './Entity';
@@ -25,9 +26,11 @@ export class World {
   public constructor(public readonly options: Readonly<WorldOptions>) {
     this.connection = new Connection(options);
     this.blocks = new BlockManager(this);
+    this.camera = new Camera(this);
     this.me = new ClientPlayer(this);
 
   public readonly blocks: BlockManager;
+  public readonly camera: Camera;
   public readonly me: ClientPlayer;
 
   /**
