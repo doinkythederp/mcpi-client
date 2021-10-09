@@ -33,8 +33,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@doinkythederp/events": "github:doinkythederp/events",
-    "source-map-support": "^0.5.20"
+    "@doinkythederp/events": "github:doinkythederp/events"
   },
   "files": [
     "dist"
