@@ -9,7 +9,6 @@
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-angular": "^13.1.0",
-    "@types/node": "latest",
     "@typescript-eslint/eslint-plugin": "^4.29.2",
     "@typescript-eslint/parser": "^4.29.2",
     "eslint": "^7.32.0",
@@ -33,7 +32,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
-    "@doinkythederp/events": "github:doinkythederp/events"
+    "@doinkythederp/events": "github:doinkythederp/events",
+    "@types/node": "latest"
   },
   "files": [
     "dist"
