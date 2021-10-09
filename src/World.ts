@@ -56,6 +56,18 @@ export class World {
       .split('|')
       .map((id) => new Entity(this, Number(id)));
   }
+
+  /**
+   * Changes a setting for the client player.
+   * @see [api reference](https://picraft.readthedocs.io/en/release-1.0/protocol.html#world-setting)
+   */
+  public async changeSetting<Strict extends boolean>(
+    key: WorldSetting | (Strict extends true ? never : string),
+    value: boolean
+  ) {
+    await this.connection.send(`world.setting(${key},${Number(value)})`, false);
+  }
+
   /** @internal */
   public readonly connection: Connection;
 }
