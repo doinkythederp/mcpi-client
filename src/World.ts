@@ -1,5 +1,6 @@
 import { BlockManager } from './Block';
 import { Connection, ConnectionOptions } from './Connection';
+import { Entity } from './Entity';
 
 export enum WorldSetting {
   /** Controls if the the world can be changed by in-game players */
@@ -31,6 +32,16 @@ export class World {
    */
   public close() {
     this.connection.destroy();
+  }
+
+  /**
+   * Returns all players currently in the world.
+   * @see [api reference](https://picraft.readthedocs.io/en/release-1.0/protocol.html#world-getplayerids)
+   */
+  public async getPlayers() {
+    return (await this.connection.send('world.getPlayerIds()', true))
+      .split('|')
+      .map((id) => new Entity(this, Number(id)));
   }
   /** @internal */
   public readonly connection: Connection;
