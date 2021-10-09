@@ -1,3 +1,4 @@
+import { BlockManager } from './Block';
 import { Connection, ConnectionOptions } from './Connection';
 
 export enum WorldSetting {
@@ -21,6 +22,9 @@ export interface WorldOptions extends ConnectionOptions {}
 export class World {
   public constructor(public readonly options: Readonly<WorldOptions>) {
     this.connection = new Connection(options);
+    this.blocks = new BlockManager(this);
+
+  public readonly blocks: BlockManager;
 
   /**
    * Destroys the connection, disconnecting from the API.
